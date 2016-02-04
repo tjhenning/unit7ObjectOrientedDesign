@@ -15,10 +15,20 @@ public class CallingCard extends Card
     }
     public boolean equals(CallingCard card)
     {
-        if (cardNumber==card.cardNumber&&PIN==card.PIN&&getName()==card.getName())
+        if (cardNumber.equals(card.cardNumber)&&PIN.equals(card.PIN)&&super.getName().equals(card.getName()))
         {
             return true;
         }
         return false;
     }
+//     public boolean equals2(Object other)
+//     {
+//         if(getClass()==other.getClass())
+//         {
+//             CallingCard otherCard=(CallingCard) other;
+//             boolean isEqual=super.equals(otherCard);
+//             return;
+//         }
+//         return false;
+//     }
 }

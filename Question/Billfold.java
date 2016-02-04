@@ -24,7 +24,7 @@ public class Billfold
             retrn+=card1.format();
         }
         retrn+="|";
-         if (card2!=null)
+        if (card2!=null)
         {
             retrn+=card2.format();
         }
@@ -63,7 +63,7 @@ public class Billfold
     {
         Billfold bill=new Billfold();     
         CallingCard card=new CallingCard("name","number","pin");
-        System.out.println(card.equals(new CallingCard("name","number","pin")));
+        System.out.println(card.equals(new CallingCard("name","number","pin")));    
     }
 }
 

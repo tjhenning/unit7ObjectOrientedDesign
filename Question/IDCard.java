@@ -21,7 +21,7 @@ public class IDCard extends Card
     }
     public boolean equals(IDCard card)
     {
-        if (idNumber==card.idNumber&&getName()==card.getName())
+        if (idNumber.equals(card.idNumber)&&getName().equals(card.getName()))
         {
             return true;
         }
