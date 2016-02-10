@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+
 /**
    A coin with no monetary value.
 */
@@ -49,7 +50,7 @@ public class Person implements Comparable<Person>
             list.add(new Person(in.next()));
         }                     
         System.out.println("original list: "+list);
-        Collections.sort(list);//cuz sort is static
+        Collections.sort(list);
         System.out.println("sorted list: "+list);
         System.out.println("First in list: "+list.get(0));
         System.out.println("Last in list:"+list.get(9));
