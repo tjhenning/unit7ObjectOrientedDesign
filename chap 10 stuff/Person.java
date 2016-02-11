@@ -50,8 +50,10 @@ public class Person implements Comparable<Person>
             list.add(new Person(in.next()));
         }                     
         System.out.println("original list: "+list);
-        Collections.sort(list);
-        System.out.println("sorted list: "+list);
+        
+        Collections.sort(list);//aww... but still didn't say we can't
+        
+        System.out.println("sorted list: "+list);        
         System.out.println("First in list: "+list.get(0));
         System.out.println("Last in list:"+list.get(9));
     }

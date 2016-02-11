@@ -55,7 +55,7 @@ public class ButtonViewer
     {
         public void actionPerformed(ActionEvent event)
         {        
-            label.setText("Button "+event.getActionCommand()+" was clicked!");        
+            label.setText("Button "+event.getActionCommand()+" was clicked at");        
         }
     }
 }
