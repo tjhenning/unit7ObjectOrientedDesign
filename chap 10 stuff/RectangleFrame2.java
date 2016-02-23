@@ -53,14 +53,14 @@ public class RectangleFrame2 extends JFrame
             remove(button);
             add(scene);
             
-     String x = JOptionPane.showInputDialog("Input x value: ");
-     String y = JOptionPane.showInputDialog("Input y value: ");
-     String r = JOptionPane.showInputDialog("Input radius: ");
-     add(scene2);   
-     int r2=Integer.parseInt(r);
-     int[] d= {Integer.parseInt(x),Integer.parseInt(y),r2,r2};
-     scene2.setCircleTo(d);
-     setSize(FRAME_WIDTH, FRAME_HEIGHT);
+            String x = JOptionPane.showInputDialog("Input x value: ");
+            String y = JOptionPane.showInputDialog("Input y value: ");
+            String r = JOptionPane.showInputDialog("Input radius: ");
+            add(scene2);   
+            int r2=Integer.parseInt(r);
+            int[] d= {Integer.parseInt(x),Integer.parseInt(y),r2,r2};
+            scene2.setCircleTo(d);
+            setSize(FRAME_WIDTH, FRAME_HEIGHT);
         }
     }
 }

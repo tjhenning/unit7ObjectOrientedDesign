@@ -31,8 +31,7 @@ public class RectangleFrame2 extends JFrame
              xyxy[2]=event.getX();
              xyxy[3]=event.getY(); 
              int[] d={xyxy[2],xyxy[3],xyxy[2]+1,xyxy[3]+1};
-             scene.setRectangleTo(d );
-             
+             scene.setRectangleTo(d );             
             }
             else if(xyxy[4]==0)
          {

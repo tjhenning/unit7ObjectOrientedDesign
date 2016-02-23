@@ -20,6 +20,7 @@ public class TriangleComponent2 extends JComponent
     
      public void paintComponent(Graphics g)
      {
+         super.paintComponent(g);
          Graphics2D g2 = (Graphics2D) g;
          g2.draw(l1);
          g2.draw(l2);
