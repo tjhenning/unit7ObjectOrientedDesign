@@ -1,9 +1,6 @@
- import java.awt.Graphics;
- import java.awt.Graphics2D;
  import java.awt.Rectangle;
- //import java.awt.geom.Line2D;
  import javax.swing.JFrame;
- import java.awt.Dimension;
+
 
 /**
  * Write a description of class DrawingEditorComponent here.
@@ -22,7 +19,7 @@ public class DrawingEditor extends JFrame
         canvas=new DrawingPanel();
         controls=new ControlPanel(canvas);
         add(controls);       
-        setSize(400,300);
+        setSize(400,400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

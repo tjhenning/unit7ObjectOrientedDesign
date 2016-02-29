@@ -39,6 +39,7 @@ public class ControlPanel extends JPanel
         button2.addActionListener(listener2);
         ClickListener listener3 = new ClickListener();
         button3.addActionListener(listener3);
+        add(canvas);
         add(button1);
         add(panel);
         add(button2);
@@ -51,15 +52,16 @@ public class ControlPanel extends JPanel
             String identity=event.getActionCommand();
             if (identity.equals("Pick Color"))
             {
-                //panel.setBackground(canvas.pickColor());
+                canvas.pickColor();
+                panel.setBackground(canvas.getColor());
             }
             else if (identity.equals("Add Circle"))
             {
-                //canvas.addCircle();
+                canvas.addCircle();
             }
             else if (identity.equals("Add Square"))
             {
-                //canvas.addSquare();
+                canvas.addSquare();
             }
             else
             {
