@@ -16,6 +16,7 @@ class Square extends Shape
     }
     void draw(Graphics2D g2, boolean filled)
     {
+        rect=new Rectangle((int)(getCenter().getX()-radius),(int)(getCenter().getY()-radius),(int)radius*2,(int)radius*2);
         g2.setColor(color);
         if (filled)
         {            
@@ -25,6 +26,16 @@ class Square extends Shape
         {
             g2.draw(rect);
         }
+    }
+    
+    boolean isInside(Point2D.Double point)
+    {
+        return (Math.abs(getCenter().getX()-point.getX())<radius)&&(Math.abs(getCenter().getY()-point.getY())<radius);
+    }
+
+    boolean isOnBorder(Point2D.Double point)
+    {
+        return ((Math.abs(getCenter().getX())-Math.abs(point.getX())==radius)&&(Math.abs(getCenter().getY())-Math.abs(point.getY())==radius));
     }
 }
 

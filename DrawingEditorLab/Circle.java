@@ -16,15 +16,24 @@ class Circle extends Shape
 
     void draw(Graphics2D g2, boolean filled)
     {
+        circle= new Ellipse2D.Double(super.getCenter().getX()-radius,super.getCenter().getY()-radius,radius*2,radius*2);
         g2.setColor(color);
         if (filled)
-        {
-            
+        {            
             g2.fill(circle);
         }
         else
         {
             g2.draw(circle);
         }
+    }
+    boolean isInside(Point2D.Double point)
+    {
+        return (center.distance(point)<radius);
+    }
+
+    boolean isOnBorder(Point2D.Double point)
+    {
+        return (Math.abs(center.distance(point)-radius)<2);
     }
 }
