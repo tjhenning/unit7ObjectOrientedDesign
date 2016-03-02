@@ -34,8 +34,8 @@ class Square extends Shape
     }
 
     boolean isOnBorder(Point2D.Double point)
-    {
-        return ((Math.abs(getCenter().getX())-Math.abs(point.getX())==radius)&&(Math.abs(getCenter().getY())-Math.abs(point.getY())==radius));
+    {        
+        return (Math.abs(Math.abs(getCenter().getX()-point.getX())-radius)<=radius/4)||(Math.abs(Math.abs(getCenter().getY()-point.getY())-radius)<=radius/4);
     }
 }
 

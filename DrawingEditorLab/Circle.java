@@ -34,6 +34,6 @@ class Circle extends Shape
 
     boolean isOnBorder(Point2D.Double point)
     {
-        return (Math.abs(center.distance(point)-radius)<2);
+        return (Math.abs(center.distance(point)-radius)<radius/3);
     }
 }
