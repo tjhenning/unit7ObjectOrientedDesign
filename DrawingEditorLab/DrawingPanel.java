@@ -30,7 +30,8 @@ public class DrawingPanel extends JPanel
         current=new Color(0,0,0);
         addMouseListener(new ClickListener());
         addMouseMotionListener(new MovementListener());
-        addKeyListener(new KeysListener());
+        setFocusable(true);
+        //addKeyListener(new KeysListener());
         
     }
     
@@ -116,10 +117,14 @@ public class DrawingPanel extends JPanel
             //lastActiveShape.goTo(point.getX(),point.getY());
             
             repaint();
+            requestFocusInWindow();
         }
         public void mouseReleased(MouseEvent e)
-        {canDrag=false;
-        nowResize=false;}
+        {
+            canDrag=false;
+            nowResize=false;
+            requestFocusInWindow();
+        }
     }
     public class MovementListener implements MouseMotionListener
     {
@@ -141,44 +146,45 @@ public class DrawingPanel extends JPanel
                     lastActiveShape.setRadius(lastActiveShape.getCenter().distance(point));
                     repaint();
                 }
-            }            
+            }     
+            requestFocusInWindow();
         }
         public void mouseMoved(MouseEvent e)
         {}
      }
-    public class KeysListener implements KeyListener
-    {
-        public void keyPressed(KeyEvent e)
-        {
-            System.out.println("here");               
-            switch(e.getKeyCode()) { 
-                case KeyEvent.VK_UP:
-                lastActiveShape.move(1,0);
-                break;
-                case KeyEvent.VK_DOWN:
-                lastActiveShape.move(-1,0);
-                break;
-                case KeyEvent.VK_LEFT:
-                lastActiveShape.move(0,-1);
-                break;
-                case KeyEvent.VK_RIGHT :
-                lastActiveShape.move(0,1);
-                break;
-            }
-                       
-            if (e.getKeyCode()==KeyEvent.VK_UP)
-            {
-                lastActiveShape.setRadius(lastActiveShape.getRadius()+1);
-            }
-            else if (e.getKeyCode()==KeyEvent.VK_DOWN)
-            {
-                lastActiveShape.setRadius(lastActiveShape.getRadius()-1);
-            }
-                         
-        }
-        public void keyReleased(KeyEvent e)
-        {}
-        public void keyTyped(KeyEvent e)
-        {}
-    }
+//     public class KeysListener implements KeyListener
+//     {
+//         public void keyPressed(KeyEvent e)
+//         {
+//             System.out.println("here");               
+//             switch(e.getKeyCode()) { 
+//                 case KeyEvent.VK_UP:
+//                 lastActiveShape.move(1,0);
+//                 break;
+//                 case KeyEvent.VK_DOWN:
+//                 lastActiveShape.move(-1,0);
+//                 break;
+//                 case KeyEvent.VK_LEFT:
+//                 lastActiveShape.move(0,-1);
+//                 break;
+//                 case KeyEvent.VK_RIGHT :
+//                 lastActiveShape.move(0,1);
+//                 break;
+//             }
+//                        
+//             if (e.getKeyCode()==KeyEvent.VK_UP)
+//             {
+//                 lastActiveShape.setRadius(lastActiveShape.getRadius()+1);
+//             }
+//             else if (e.getKeyCode()==KeyEvent.VK_DOWN)
+//             {
+//                 lastActiveShape.setRadius(lastActiveShape.getRadius()-1);
+//             }
+//             requestFocusInWindow();
+//         }
+//         public void keyReleased(KeyEvent e)
+//         {}
+//         public void keyTyped(KeyEvent e)
+//         {}
+//     }
 }
