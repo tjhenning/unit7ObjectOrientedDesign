@@ -21,6 +21,7 @@ public class DrawingPanel extends JPanel
     boolean dragMode;//true is drag, false is resize
     boolean canDrag=false;//true if currently dragging
     boolean nowResize;//true is resize mode
+    boolean isShift=false;
     
         
     public DrawingPanel()
@@ -31,7 +32,7 @@ public class DrawingPanel extends JPanel
         addMouseListener(new ClickListener());
         addMouseMotionListener(new MovementListener());
         setFocusable(true);
-        //addKeyListener(new KeysListener());
+        addKeyListener(new KeysListener());
         
     }
     
@@ -108,14 +109,14 @@ public class DrawingPanel extends JPanel
                     dragMode=true;
                     lastActiveShape=shape;
                 }
-                if(shape.isOnBorder(point))
-                {
-                    dragMode=false;
-                    lastActiveShape=shape;
-                }                
+                              
             }
             //lastActiveShape.goTo(point.getX(),point.getY());
-            
+            if(lastActiveShape.isOnBorder(point))
+                {
+                    dragMode=false;
+                    
+                }  
             repaint();
             requestFocusInWindow();
         }
@@ -152,39 +153,56 @@ public class DrawingPanel extends JPanel
         public void mouseMoved(MouseEvent e)
         {}
      }
-//     public class KeysListener implements KeyListener
-//     {
-//         public void keyPressed(KeyEvent e)
-//         {
-//             System.out.println("here");               
-//             switch(e.getKeyCode()) { 
-//                 case KeyEvent.VK_UP:
-//                 lastActiveShape.move(1,0);
-//                 break;
-//                 case KeyEvent.VK_DOWN:
-//                 lastActiveShape.move(-1,0);
-//                 break;
-//                 case KeyEvent.VK_LEFT:
-//                 lastActiveShape.move(0,-1);
-//                 break;
-//                 case KeyEvent.VK_RIGHT :
-//                 lastActiveShape.move(0,1);
-//                 break;
-//             }
-//                        
-//             if (e.getKeyCode()==KeyEvent.VK_UP)
-//             {
-//                 lastActiveShape.setRadius(lastActiveShape.getRadius()+1);
-//             }
-//             else if (e.getKeyCode()==KeyEvent.VK_DOWN)
-//             {
-//                 lastActiveShape.setRadius(lastActiveShape.getRadius()-1);
-//             }
-//             requestFocusInWindow();
-//         }
-//         public void keyReleased(KeyEvent e)
-//         {}
-//         public void keyTyped(KeyEvent e)
-//         {}
-//     }
+    public class KeysListener implements KeyListener
+    {
+        public void keyPressed(KeyEvent e)
+        {                   
+            if (e.getKeyCode()==16)
+            {
+                isShift=true;
+            }
+            else
+            {
+                if (!isShift)
+                {
+                    switch(e.getKeyCode()) { 
+                        case KeyEvent.VK_UP:
+                        lastActiveShape.move(0,-1);
+                        break;
+                        case KeyEvent.VK_DOWN:
+                        lastActiveShape.move(0,1);
+                        break;
+                        case KeyEvent.VK_LEFT:
+                        lastActiveShape.move(-1,0);
+                        break;
+                        case KeyEvent.VK_RIGHT :
+                        lastActiveShape.move(1,0);
+                        break;
+                    }
+                }
+                else
+                {                       
+                    if (e.getKeyCode()==KeyEvent.VK_UP)
+                    {
+                        lastActiveShape.setRadius(lastActiveShape.getRadius()+1);
+                    }
+                    else if (e.getKeyCode()==KeyEvent.VK_DOWN)
+                    {
+                        lastActiveShape.setRadius(lastActiveShape.getRadius()-1);
+                    }
+                }
+            }
+            repaint();
+            requestFocusInWindow();           
+        }
+        public void keyReleased(KeyEvent e)
+        {
+            if (e.getKeyCode()==16)
+            {
+                isShift=false;
+            }
+        }
+        public void keyTyped(KeyEvent e)
+        {}
+    }
 }
